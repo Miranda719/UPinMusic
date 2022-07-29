@@ -10,8 +10,8 @@ export default defineConfig({
   },
   dva:{},
   routes: [
+    {path:'/',component:'chenrenjun',title:'主页'},
     {path:'/lanmin',component:'lanmin',title:'搜索'},
-    {path:'/chenrenjun',component:'chenrenjun',title:'主页'},
     {path:'/chenqian',component:'chenqian',title:'我的'},
     {path:'/qinzhonjin',component:'qinzhonjin',title:'歌曲详情'},
     {path:'/xujiapeng',component:'xujiapeng',title:'热门歌曲'},
