@@ -11,7 +11,7 @@ import { history } from "@umijs/max";
 const TapBar1:FC = ()=>{
     const tabs = [
         {
-          key: 'chenrenjun',
+          key: '',
           title: '首页',
           icon: <AppOutline />,
           badge: Badge.dot,
