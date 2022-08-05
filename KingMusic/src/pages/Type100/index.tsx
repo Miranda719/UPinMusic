@@ -1,14 +1,21 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import styles from './index.less';
-import { GetMusicById, GetMusicUrl } from '@/services/search';
+import { GetMusicById, GetMusicUrl, queryMusicList } from '@/services/search';
 import { history } from '@umijs/max';
-type Props = {
-    result?: any
-}
-const Type100: FC<Props> = (props) => {
-    const artists = props.result.artists
+import { connect } from "@/.umi/plugin-dva";
 
+const Type100 = ({search}) => {
     const [list, setList] = useState([])
+    const [artists,setArtists]=useState([]);
+
+    const getContentList = async (keywords: string, type: number) => {
+        let result = await queryMusicList({ keywords: keywords, type: type });
+        result.code === 200 ? setArtists(result.result.artists) : setArtists([]);
+        console.log(result)
+    };
+    useEffect(() => {
+        getContentList(search.keywords, 100)
+    }, [])
 
     const artistClick = async (id: number) => {
         let result = await GetMusicById(id);
@@ -48,4 +55,6 @@ const Type100: FC<Props> = (props) => {
     }
 }
 
-export default Type100;
+export default connect(({ search }) => ({
+    search,
+}))(Type100);

@@ -1,17 +1,24 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import styles from './index.less';
-import { GetMusicById, GetMusicUrl } from '@/services/search';
+import { GetMusicById, GetMusicUrl, queryMusicList } from '@/services/search';
 import { history } from '@umijs/max';
+import { connect } from "@/.umi/plugin-dva";
 
-type Props = {
-    result?: any
-}
+const Type1018 = ({search}) => {
+    const [list, setList] = useState([])
+    const [artists,setArtists]=useState([]);
 
-
-
-const Type1: FC<Props> = (props) => {
-    const [list, setList] = useState(props.result.song.songs);
-    const [artists, setArtists] = useState(props.result.artist.artists)
+    const getContentList = async (keywords: string, type: number) => {
+        let result = await queryMusicList({ keywords: keywords, type: type });
+        if(result.code===200){
+            setArtists(result.result.artist.artists);
+            setList(result.result.song.songs)
+        }
+        console.log(result)
+    };
+    useEffect(() => {
+        getContentList(search.keywords, 1018)
+    }, [])
 
     const itemClick = async (id: number) => {
         // history.push(`/qinzhongjin?id=${id}`);
@@ -24,7 +31,6 @@ const Type1: FC<Props> = (props) => {
         let result = await GetMusicById(id);
         setList(result.hotSongs)
         setArtists([])
-        console.log(result)
     }
     return (
         <div className={styles.container}>
@@ -46,4 +52,6 @@ const Type1: FC<Props> = (props) => {
     )
 }
 
-export default Type1;
+export default connect(({ search }) => ({
+    search,
+}))(Type1018);

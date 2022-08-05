@@ -11,7 +11,21 @@ export default defineConfig({
   dva: {},
   routes: [
     { path: '/qinzhonjin', component: 'qinzhonjin', title: '歌曲详情' },
-    { path: '/lanmin', component: 'lanmin', title: '搜索' },
+    { path: '/lanmin', component: 'lanmin', title: '搜索' ,
+    routes: [
+      { path: 'type1', component: 'Type1', title: '单曲' },
+      { path: 'type1018', component: 'Type1018', title: '综合' },
+      { path: 'type100', component: 'Type100', title: '歌手' },
+      { path: 'type10', component: 'Type10', title: '专辑' },
+      { path: 'type1014', component: 'Type1014', title: '视频' },
+      { path: 'type1000', component: 'Type1000', title: '歌单' },
+      { path: 'type1002', component: 'Type1002', title: '用户' },
+      { path: 'type1004', component: 'Type1004', title: 'MV' },
+      { path: 'type1006', component: 'Type1006', title: '歌词' },
+      { path: 'type1009', component: 'Type1009', title: '电台' },
+      { path: 'type2000', component: 'Type2000', title: '声音' },
+    ]
+  },
     {
       path: '/',
       component: '@/layouts/index2',

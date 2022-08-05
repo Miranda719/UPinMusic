@@ -18,5 +18,5 @@ export function GetMusicUrl(id=0) {
 }
 
 export function GetMusicById(id=0) {
-    return request(`api/artists?id=${id}`);
+    return request(`/api/artists?id=${id}`);
 }

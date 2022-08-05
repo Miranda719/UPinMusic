@@ -3,21 +3,13 @@ import styles from './index.less';
 import { SearchOutlined } from '@ant-design/icons';
 import { Input, Tabs } from 'antd';
 import { GetDefault, queryMusicList, GetHot } from '@/services/search';
-import { connect } from '@umijs/max';
-import Type1 from '@/components/Type1';
-import Type1018 from '@/components/Type1018';
-import Type100 from '@/components/Type100';
-import Type10 from '@/components/Type10';
-import Type1014 from '@/components/Type1014';
-import Type1000 from '@/components/Type1000';
-import Type1002 from '@/components/Type1002';
-import Type1004 from '@/components/Type1004';
-import Type1006 from '@/components/Type1006';
-import Type1009 from '@/components/Type1009';
-import Type2000 from '@/components/Type2000';
+import {Outlet} from '@umijs/max';
+import { useNavigate } from 'react-router-dom'
+import { connect } from '@/.umi/plugin-dva';
 
 
 function Page({ search, dispatch }) {
+  let navigate = useNavigate();
   // 默认搜索关键词
   const [defaultKwd, setDefaultKwd] = useState('')
   // 关键词
@@ -39,37 +31,9 @@ function Page({ search, dispatch }) {
   const getContentList = async (keywords: string, type: number) => {
     let result = await queryMusicList({ keywords: keywords, type: type });
     result.code === 200 ? setContent(result) : setContent(null);
-    console.log(result,'xxxxxxxxxxxxx')
-    // 子节点
-    const c = () => {
-      switch (type) {
-        case 1:
-          return (<Type1 result={result.result}></Type1>)
-        case 1018:
-          return (<Type1018 result={result.result}></Type1018>)
-        case 100:
-          return (<Type100 result={result.result}></Type100>)
-        case 10:
-          return (<Type10 result={result.result}></Type10>)
-        case 1014:
-          return (<Type1014 result={result.result}></Type1014>)
-        case 1000:
-          return (<Type1000 result={result.result}></Type1000>)
-        case 1002:
-          return (<Type1002 result={result.result}></Type1002>)
-        case 1004:
-          return (<Type1004 result={result.result}></Type1004>)
-        case 1006:
-          return (<Type1006 result={result.result}></Type1006>)
-        case 1009:
-          return (<Type1009 result={result.result}></Type1009>)
-        case 2000:
-          return (<Type2000 result={result.data}></Type2000>)
-        default:
-          return (<Type1 result={result.result}></Type1>)
-      }
-    }
-    setChild(c);
+    // 路由跳转
+    navigate(`/lanmin/type${type}`)
+
     dispatch({
       type: 'search/save',
       //payload 有效负载 ，dispatch传递参数的时候
@@ -128,7 +92,7 @@ function Page({ search, dispatch }) {
   }
 
 
-  const historyClick=(kwd:string)=>{
+  const historyClick = (kwd: string) => {
     setKeywords(kwd);
     getContentList(kwd, type)
   }
@@ -164,7 +128,8 @@ function Page({ search, dispatch }) {
           </Tabs>
 
           {/* 搜索列表 */}
-          {child}
+          {/* {child} */}
+          <Outlet></Outlet>
         </div>
 
       </div>
@@ -179,7 +144,7 @@ function Page({ search, dispatch }) {
             {search.history.length > 0 && <div className={styles.listBox}>
               <div>搜索历史</div>
               {search.history.map(item => (
-                <span className={styles.hotList} onClick={()=>historyClick(item)} key={item}>{item}</span>
+                <span className={styles.hotList} onClick={() => historyClick(item)} key={item}>{item}</span>
               ))}
             </div>}
           </div>
