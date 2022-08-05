@@ -3,6 +3,7 @@ import styles from './index.less';
 import { GetMusicUrl, queryMusicList } from '@/services/search';
 import { history } from '@umijs/max';
 import { connect } from "@/.umi/plugin-dva";
+import MusicList from "@/components/MusicList";
 
 
 const Type1 = ({ search, dispatch }) => {
@@ -24,11 +25,7 @@ const Type1 = ({ search, dispatch }) => {
 
     return (
         <div className={styles.container}>
-            {list && <div className={styles.list}>
-                {list.map(item => (
-                    <p onClick={() => itemClick(item.id)} className={styles.listItem} key={item.id}>{item.name}</p>
-                ))}
-            </div>}
+            <MusicList list={list}></MusicList>
         </div>
     )
 }

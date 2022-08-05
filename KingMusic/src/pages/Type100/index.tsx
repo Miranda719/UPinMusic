@@ -3,16 +3,13 @@ import styles from './index.less';
 import { GetMusicById, GetMusicUrl, queryMusicList } from '@/services/search';
 import { history } from '@umijs/max';
 import { connect } from "@/.umi/plugin-dva";
+import MusicList from "@/components/MusicList";
 
-const Type100 = ({search}) => {
+const Type100 = ({ search }) => {
     const [list, setList] = useState([])
-    const [artists,setArtists]=useState([]);
+    const [artists, setArtists] = useState([]);
 
-    const getContentList = async (keywords: string, type: number) => {
-        let result = await queryMusicList({ keywords: keywords, type: type });
-        result.code === 200 ? setArtists(result.result.artists) : setArtists([]);
-        console.log(result)
-    };
+
     useEffect(() => {
         getContentList(search.keywords, 100)
     }, [])
@@ -22,21 +19,15 @@ const Type100 = ({search}) => {
         setList(result.hotSongs)
     }
 
-    const itemClick = async (id: number) => {
-        let result = await GetMusicUrl(id);
-        const url = result.data[0].url;
-        history.push(url)
-    }
+    const getContentList = async (keywords: string, type: number) => {
+        let result = await queryMusicList({ keywords: keywords, type: type });
+        result.code === 200 ? setArtists(result.result.artists) : setArtists([]);
+        // console.log(result)
+    };
 
     if (list && list.length > 0) {
         return (
-            <div className={styles.container}>
-                {list && <div className={styles.list}>
-                    {list.map(item => (
-                        <p onClick={() => itemClick(item.id)} className={styles.listItem} key={item.id}>{item.name}</p>
-                    ))}
-                </div>}
-            </div>
+            <MusicList list={list}></MusicList>
         )
     }
     else {

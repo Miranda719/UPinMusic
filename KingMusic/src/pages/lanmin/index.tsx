@@ -68,6 +68,7 @@ function Page({ search, dispatch }) {
     let val = e.target.value
     setKeywords(val)
     if (val === '') {
+      setType(1)
       getContentList(val, type)
     }
   }
