@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext, useReducer } from 'react';
 import styles from './index.less';
-import { AudioOutlined, SearchOutlined } from '@ant-design/icons';
-import { Input, Col, Divider, Row, Button, Tabs } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
+import { Input, Tabs } from 'antd';
 import { GetDefault, queryMusicList, GetHot } from '@/services/search';
 import { connect } from '@umijs/max';
 import Type1 from '@/components/Type1';
@@ -40,6 +40,7 @@ function Page({ search, dispatch }) {
     let result = await queryMusicList({ keywords: keywords, type: type });
     result.code === 200 ? setContent(result) : setContent(null);
     console.log(result,'xxxxxxxxxxxxx')
+    // 子节点
     const c = () => {
       switch (type) {
         case 1:
