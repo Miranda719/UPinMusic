@@ -1,22 +1,61 @@
 .title {
   background: rgb(242 210 121);
 
-  .inputBox{
-    width: 300px;
-    margin: 0 auto;
+  // 搜索框
+  .inputBox {
+    width      : 300px;
+    margin     : 0 auto;
     line-height: 45px;
-    .input{
-      width: 250px;
+
+    .input {
+      width        : 250px;
       border-radius: 10px;
     }
+
     .searchBar {
       font-size : 16px !important;
       text-align: center;
-      width: 50px;
-      display: inline-block;
+      width     : 50px;
+      display   : inline-block;
     }
   }
- 
 
+}
 
+.container {
+  width     : 100%;
+  padding   : 10px;
+  box-sizing: border-box;
+
+  // 类型选择
+  .type {
+    overflow: scroll;
+
+    .btn {
+      margin-right: 5px;
+    }
+  }
+
+  // 热门搜索+历史搜索
+  .listBox {
+    margin-bottom: 10px;
+    .hotList {
+      display         : inline-block;
+      border-radius   : 5px;
+      padding         : 6px;
+      margin          : 5px 5px 0 0;
+      background-color: antiquewhite;
+    }
+  }
+
+  // 搜索列表
+  .list {
+    .listItem {
+      list-style      : none;
+      padding         : 5px;
+      margin-bottom   : 5px;
+      background-color: antiquewhite;
+      border-radius   : 5px;
+    }
+  }
 }

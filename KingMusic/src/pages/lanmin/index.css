@@ -16,3 +16,31 @@
   width: 50px;
   display: inline-block;
 }
+.container {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.container .type {
+  overflow: scroll;
+}
+.container .type .btn {
+  margin-right: 5px;
+}
+.container .listBox {
+  margin-bottom: 10px;
+}
+.container .listBox .hotList {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 6px;
+  margin: 5px 5px 0 0;
+  background-color: antiquewhite;
+}
+.container .list .listItem {
+  list-style: none;
+  padding: 5px;
+  margin-bottom: 5px;
+  background-color: antiquewhite;
+  border-radius: 5px;
+}
