@@ -1,19 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './index.less';
 import { useRequest } from '@umijs/max';
-import { Getlist } from '@/services';
+import { Getlist, GetBanner, GetToplist, GetArtist, logStatus,Layout } from '@/services';
+import Banner from '@/components/banner';
+import HotPlayList from '@/components/hotplaylist';
+import Personalized from '@/components/personalized'
 
 export default function Page() {
-  const {data,error,loading} = useRequest(()=>{ 
-    return Getlist() 
+  const [key, setKey] = useState(5001)
+
+  const { data: ldata, error, loading: lloading } = useRequest(() => {
+    return Getlist()
   });
 
-  console.log(data);
+  const { data: bdata, loading: bloading } = useRequest(() => {
+    return GetBanner()
+  });
+
+  const { data: tdata, loading: tloading } = useRequest(() => {
+    return GetToplist()
+  });
+
+  const { data: adata, loading: aloading } = useRequest(() => {
+    return GetArtist()
+  });
+
+  // const { data: data, loading: loading } = useRequest(() => {
+  //   return Layout()
+  // });
+
+  // console.log(data);
   
-  
+
+
+
   return (
     <div>
-      <h1 className={styles.title}>主页 Page index</h1>
+      {bdata && <Banner banner={bdata}></Banner>}
+      {adata && <Personalized adata={adata}></Personalized>}
+      {tdata && <HotPlayList tdata={tdata} changeTabs={(key: number) => setKey(key)}></HotPlayList>}
     </div>
   );
 }

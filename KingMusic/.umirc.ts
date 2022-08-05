@@ -12,6 +12,9 @@ export default defineConfig({
   routes: [
     {path:'/lanmin',component:'lanmin',title:'搜索'},
     {path:'/chenrenjun',component:'chenrenjun',title:'主页'},
+    {path:'/perDetail',component:'perDetail',title:'推荐歌单详情页'},
+    {path:'/songsDetail',component:'songsDetail',title:'歌曲详情页'},
+    {path:'/login',component:'login',title:'登录'},
     {path:'/chenqian',component:'chenqian',title:'我的'},
     {path:'/qinzhonjin',component:'qinzhonjin',title:'歌曲详情'},
     {path:'/xujiapeng',component:'xujiapeng',title:'热门歌曲'},
