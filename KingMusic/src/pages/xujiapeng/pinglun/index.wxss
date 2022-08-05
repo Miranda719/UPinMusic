@@ -1,0 +1,52 @@
+.title {
+  padding: 0;
+  padding-bottom: 5vh;
+  font-size: 8px;
+}
+.title .span {
+  font-size: 15px;
+}
+.title .tab {
+  color: black;
+  padding: 0;
+}
+.title .tab .adm-tabs-tab-line {
+  width: 0;
+}
+.title .video {
+  position: relative;
+}
+.title .video .image {
+  position: absolute;
+  left: -5px;
+  top: -5px;
+}
+.title .video .nickname {
+  position: absolute;
+  color: black;
+  font-size: 8px;
+  left: 60px;
+  top: 0px;
+}
+.title .video .timeStr {
+  position: absolute;
+  color: #999;
+  font-size: 9px;
+  left: 60px;
+  top: 17px;
+}
+.title .video .icons {
+  position: absolute;
+  color: #999;
+  right: 0px;
+  top: 10px;
+}
+.title .video .icons .likedCount {
+  font-size: 10px;
+}
+.title .content-v {
+  margin-left: 60px;
+}
+.title .content-v .content {
+  font-size: 8px;
+}

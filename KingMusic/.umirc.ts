@@ -14,7 +14,10 @@ export default defineConfig({
     {path:'/chenrenjun',component:'chenrenjun',title:'主页'},
     {path:'/chenqian',component:'chenqian',title:'我的'},
     {path:'/qinzhonjin',component:'qinzhonjin',title:'歌曲详情'},
-    {path:'/xujiapeng',component:'xujiapeng',title:'热门歌曲'},
+    {
+      path:'/xujiapeng',component:'xujiapeng',title:'热门歌曲',
+    },
+    { path: '/pinglun', component: 'xujiapeng/pinglun',title:'评论' },
   ],
   npmClient: 'pnpm',
     // 代理配置
