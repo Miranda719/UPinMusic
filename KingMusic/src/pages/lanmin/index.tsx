@@ -100,7 +100,11 @@ function Page({ search, dispatch }) {
   };
 
   const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setKeywords(e.target.value)
+    let val=e.target.value
+    setKeywords(val)
+    if(val===''){
+      getContentList(val, type)
+    }
   }
   const onSearch = () => {
     getContentList(keywords, type)
