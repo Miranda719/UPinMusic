@@ -39,7 +39,7 @@ function Page({ search, dispatch }) {
   const getContentList = async (keywords: string, type: number) => {
     let result = await queryMusicList({ keywords: keywords, type: type });
     result.code === 200 ? setContent(result) : setContent(null);
-    // console.log(result,'xxxxxxxxxxxxx')
+    console.log(result,'xxxxxxxxxxxxx')
     const c = () => {
       switch (type) {
         case 1:
@@ -100,9 +100,9 @@ function Page({ search, dispatch }) {
   };
 
   const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let val=e.target.value
+    let val = e.target.value
     setKeywords(val)
-    if(val===''){
+    if (val === '') {
       getContentList(val, type)
     }
   }
@@ -112,8 +112,7 @@ function Page({ search, dispatch }) {
 
   const getHotList = async () => {
     let result = await GetHot();
-    let h = result.tags;
-    setHot(h)
+    setHot(result.tags)
   };
 
   const tabClick = (e: any) => {
@@ -127,6 +126,11 @@ function Page({ search, dispatch }) {
     getContentList(kwd, type)
   }
 
+
+  const historyClick=(kwd:string)=>{
+    setKeywords(kwd);
+    getContentList(kwd, type)
+  }
   const searchBar = (
     <h1 className={styles.title}>
       {/* 搜索框 */}
@@ -174,7 +178,7 @@ function Page({ search, dispatch }) {
             {search.history.length > 0 && <div className={styles.listBox}>
               <div>搜索历史</div>
               {search.history.map(item => (
-                <span className={styles.hotList} key={item}>{item}</span>
+                <span className={styles.hotList} onClick={()=>historyClick(item)} key={item}>{item}</span>
               ))}
             </div>}
           </div>
