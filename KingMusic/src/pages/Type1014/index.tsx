@@ -17,7 +17,7 @@ const Type1014 = ({ search }) => {
         <div >
             {list && <div className={styles.list}>
                 {list.map(item => (
-                    <div key={item.coverUrl}>
+                    <div key={item.coverUrl} className={styles.itemBox}>
                         <img className={styles.pic} src={item.coverUrl}></img>
                         <p className={styles.listItem} >{item.title}</p>
                     </div>

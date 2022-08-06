@@ -1,15 +1,30 @@
- // 搜索列表
 
- .list {
-    .pic {
-        width : 100px;
-        height: 100px;
+.list {
+    // text-align: center;
+    width: 100%;
+
+    .itemBox {
+        width  : 100px;
+        margin : 0 auto;
+        float  : left;
+        height : 140px;
+        box-sizing: border-box;
+        overflow-y: hidden;
+        margin-right: 5px;
+        margin-bottom: 5px;
+
+        .pic {
+            width : 100px;
+            height: 100px;
+        }
+
+        .listItem {
+            list-style   : none;
+            padding      : 5px;
+            margin-bottom: 5px;
+            font-size    : 10px;
+            text-align: center;
+        }
     }
 
-    .listItem {
-        list-style      : none;
-        padding         : 5px;
-        margin-bottom   : 5px;
-        border-radius   : 5px;
-    }
 }

@@ -18,9 +18,9 @@ const Type2000 = ({ search }) => {
         <div>
             {list && <div className={styles.list}>
                 {list.map(item => (
-                    <div key={item.resourceId}>
+                    <div key={item.resourceId} className={styles.info}>
                         <img className={styles.pic} src={item.uiElement.image.imageUrl}></img>
-                        <p className={styles.listItem} >{item.uiElement.mainTitle.title}</p>
+                        <span className={styles.listItem} >{item.uiElement.mainTitle.title}</span>
                     </div>
                 ))}
             </div>}
