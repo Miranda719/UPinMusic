@@ -6,11 +6,11 @@ import { Popup, NavBar } from 'antd-mobile';
 import MusicDetails from '@/components/MusicDetails';
 import PlaymusicList from "@/components/PlayMusicList";
 import { useMatch } from "@umijs/max";
+import { history } from "@umijs/max";
 const LayOut2: FC = () => {
   const [visible1, setVisible1] = useState(false);
   const [visible2, setVisible2] = useState(false);
   const [data,setData] = useState(1);
-  
   const upDatePage = ()=>{
     setTimeout(() => {
       setData(data+1);

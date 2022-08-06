@@ -8,14 +8,12 @@ import BtnPlayer from '../BtnPlayer';
 const MusicDetails = (props: any) => {
   //获取全局数据
   const { state, musicMethods, inner,audio } = useModel("stores");
-  
+  // const [TF,setTF]=useState(true)
   //触发组件更新
   const [data,setDate] = useState(1);
   const dodo = ()=>{
-    let news =Math.floor( Math.random()*100);
-    setDate(news);
+    setDate(data+1);
   }
-
   const playRecord = ()=>{
     musicMethods.playRecord();
     //进度条改变
@@ -36,7 +34,11 @@ const MusicDetails = (props: any) => {
           }
       }
   }
+  setTimeout(() => {
+    playRecord();
+  }, 100);
   }
+  // playRecord()
 
   const clcikLine = (e: any) => {
     dodo();
@@ -55,7 +57,7 @@ const MusicDetails = (props: any) => {
     musicMethods.handleMouseDown();
   }
   return (
-    <div className={styles.music_bg}>
+    <div className={styles.music_bg} >
       <div>
         {props.children}
         <h1 className={styles.title}>歌曲|歌词</h1>

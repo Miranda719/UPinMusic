@@ -15,8 +15,7 @@ const Music1 = (props: any) => {
     //触发组件更新
     const [data, setDate] = useState(1);
     const dodo = () => {
-        let news = Math.floor(Math.random() * 100);
-        setDate(news);
+        setDate(data+1);
     }
     const goTo=()=>{
         history.push('/qinzhonjin');

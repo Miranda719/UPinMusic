@@ -30,13 +30,13 @@ const TapBar1:FC = ()=>{
       ];
 
       const sethistory = (value:string)=>{
-        history.push('/'+value);
+        history.push(value);
       }
     return (
         <div className="tapbar-box">
-            <TabBar onChange={(value)=>sethistory(value)}>
+            <TabBar onChange={(value)=>sethistory(value)} activeKey={location.pathname}>
           {tabs.map(item => (
-            <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
+            <TabBar.Item key={`/`+item.key} icon={item.icon} title={item.title} />
           ))}
         </TabBar>
         </div>

@@ -4,9 +4,10 @@ import { useRequest } from '@umijs/max';
 import { RecentList } from '@/services';
 import { NavBar, Space } from 'antd-mobile';
 import { MoreOutline, PlayOutline, SearchOutline } from 'antd-mobile-icons';
-
+import { useModel } from "@umijs/max";
 
 export default function Page() {
+    const { state } = useModel("stores");
   const {data,error,loading} = useRequest(()=>{ 
     return RecentList()
   });
@@ -33,13 +34,13 @@ const back = () => {
             </NavBar>
             {/* {!loading && JSON.stringify(data)} */}
             <div className={styles.xhgd}>
-            {!loading && currentList.map((item: any) => (
-                <ul className={styles.songs} key={item.data.id}>
+            {(state.playList.length > 0) && state.playList.map((item: any) => (
+                <ul className={styles.songs} key={item.id}>
                     <li>
-                        <img src={item.data.al.picUrl} width={50} height={50} />
-                        <span >{item.data.name}</span>
+                        <img src={item.imgUrl} width={50} height={50} />
+                        <span >{item.songName}</span>
                         <PlayOutline className={styles.q} fontSize={15}/>
-                        <p className={styles.songslist}>{item.data.ar[0].name}--{item.data.al.name}</p>
+                        <p className={styles.songslist}>{item.name}</p>
                     </li>
                 </ul>
             ))}

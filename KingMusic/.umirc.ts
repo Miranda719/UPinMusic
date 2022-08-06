@@ -34,6 +34,7 @@ export default defineConfig({
     },
     {
       path: '/',
+      // index ,
       component: '@/layouts/index2',
       routes: [
         { path: '/', component: 'chenrenjun', title: '主页' },
