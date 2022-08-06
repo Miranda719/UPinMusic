@@ -44,6 +44,10 @@ export default defineConfig({
     { path: '/perDetail', component: 'perDetail', title: '推荐歌单详情页' },
     { path: '/songsDetail', component: 'songsDetail', title: '歌曲详情页' },
     { path: '/login', component: 'login', title: '登录' },
+    { path: '/Likemusic', component: 'chenqian/Likemusic', title: '我的喜欢' },
+    { path: '/Recentmusic', component: 'chenqian/Recentmusic', title: '最近播放' },
+    { path: '/Gedan', component: 'chenqian/Gedan', title: '歌单' },
+    { path: '/Singple', component: 'chenqian/Singple', title: '个人主页' },
   ],
   npmClient: 'pnpm',
   // 代理配置

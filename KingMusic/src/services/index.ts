@@ -9,14 +9,9 @@ export function GetMusicUrl(id:number){
     return request(`/api/song/url?id=${id}`);
 }
 
-export function Get11111(id:number){
-    return request(`/api/playlist/detail?id=${id}`);
-}
-
 export function Getlist() {
     return request('/api/song/detail?ids=347230,347231')
 }
-// 
 
 export function GetBanner() {
     return request('/api/banner?type=1')
@@ -61,3 +56,28 @@ export function logStatus() {
 export function Layout() {
     return request(`/api/logout`)
 }
+export function detailList(){
+    return request('/api/user/detail?uid=1342910203')
+}
+export function likelList(){
+    return request('/api/likelist?uid=1342910203')
+}
+export function LilistD(id:any){
+    return request(`/api/song/detail?ids=${id}&limit=5`)
+}
+export function RecentList(){
+    return request('/api/record/recent/song?limit=5')
+}
+export function UsermusicL(){
+    return request('/api/user/playlist?uid=1342910203')
+}
+export function gedanD(id:any,limit:any,offset:any){
+    return request(`/api/playlist/track/all?id=${id}&limit=${limit}&offset=${offset}`)
+}
+export function CreateD(){
+    return request('/api/playlist/create?name=测试歌单')
+}
+export function DeleteD(id:any){
+    return request(`/api/playlist/delete?id=${id}`)
+}
+// 
