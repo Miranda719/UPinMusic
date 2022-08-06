@@ -9,18 +9,18 @@ export default function Page() {
     // const goMusicDetail = ()=>{
     //     history.push('/qinzhonjin')
     // }
-    // const location = useLocation()
-    // console.log(location)
+   
     const { data, error, loading } = useRequest(() => {
         return likelList()
     });
+    console.log(data)
     const abc = !loading && data.ids
     const { data: data2, loading: loading2 } = useRequest(() => {
         return LilistD(abc)
     }, { refreshDeps: [data] })
     // console.log(data2, "bbbbbbbbbb")
     // console.log(abc,"xxxxxxxxxx")
-    // console.log(data, "1111111111111111111")
+   
     // const songsList = !loading2 && data2.songs
     const right = (
         <div style={{ fontSize: 24 }}>
