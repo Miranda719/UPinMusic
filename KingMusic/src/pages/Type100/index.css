@@ -1,0 +1,27 @@
+.artists {
+  margin-bottom: 10px;
+  background-color: beige;
+  border-radius: 5px;
+}
+.artists .info {
+  padding: 10px;
+  border-bottom: 1px dotted #ddd;
+}
+.artists .info .pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+}
+.artists .info .listItem {
+  list-style: none;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+.list .listItem {
+  list-style: none;
+  padding: 5px;
+  margin-bottom: 5px;
+  background-color: antiquewhite;
+  border-radius: 5px;
+}

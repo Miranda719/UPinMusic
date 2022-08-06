@@ -4,7 +4,7 @@ import Music1 from "@/components/Music1";
 import { useModel } from "@umijs/max";
 import { Popup, Space, Button } from 'antd-mobile';
 import MusicDetails from '@/components/MusicDetails';
-import MusicList from "@/components/MusicList";
+import PlaymusicList from "@/components/PlayMusicList";
 const LayOut2: FC = () => {
   const [visible1, setVisible1] = useState(false);
   const [visible2, setVisible2] = useState(false);
@@ -27,7 +27,7 @@ const LayOut2: FC = () => {
       </Popup>
       <Popup visible={visible2} onMaskClick={() => { setVisible2(false)}}  bodyStyle={{ height: '60vh' }} >
         <div onClick={()=>{  upDatePage()}}>
-        <MusicList></MusicList>
+        <PlaymusicList></PlaymusicList>
         </div>
       </Popup>
     </div>

@@ -1,0 +1,7 @@
+.list .listItem {
+  list-style: none;
+  padding: 5px;
+  margin-bottom: 5px;
+  background-color: antiquewhite;
+  border-radius: 5px;
+}

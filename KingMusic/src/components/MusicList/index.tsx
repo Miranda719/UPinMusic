@@ -1,73 +1,29 @@
-import { FC, useEffect, useState } from "react";
-import './index.less';
-import { GetMusicDetail, GetMusicUrl } from '@/services/index';
-import { useRequest } from "@umijs/max";
-import { List } from 'antd-mobile';
-import { useModel } from "@umijs/max";
-const musicList: FC = () => {
-    let [id, setId] = useState(354601);
-    let [isTrue,setisTrue] = useState(false);
-    const users = [{
-        name: 'FIR',
-        songName: '天下',
-        id: 298317
-    },
-    {
-        name: 'FIR',
-        songName: '天下',
-        id: 210049
-    },
-    {
-        name: 'FIR',
-        songName: '天下',
-        id: 255020
-    },
-    {
-        name: 'FIR',
-        songName: '天下',
-        id: 210062
-    },
-    {
-        name: 'FIR',
-        songName: '天下',
-        id: 5268423
-    }];
+import React, { FC, useEffect, useState } from "react";
+import styles from './index.less';
+import { GetMusicUrl, queryMusicList } from '@/services/search';
+import { history } from '@umijs/max';
+ type Props={
+    list?:Array<object>
+ }
 
-    const { state,audio,effects,musicMethods } = useModel("stores");
-    effects.getMusicData({payload:{id}});
-    const gatData = (ids: number) => {
-        state.isPlay=true;
-        if (state.isPlay) {
-            console.log('播放',state);
-            setTimeout(() => {
-                audio.current?.play();
-                console.log('xxxxxxxx');
-            }, 300);
-            
-        } else {
-            return false
-        }
+const MusicList :FC<Props>= (props) => {
+    const list=props.list;
+    const itemClick = async (id: number) => {
+        // history.push(`/qinzhongjin?id=${id}`);
+        let result = await GetMusicUrl(id);
+        const url = result.data[0].url;
+        history.push(url)
     }
-    useEffect(()=>{
-        if(isTrue){
-            gatData(id);
-        }
-        setisTrue(true)
-    },[id])
 
     return (
-        <div className="mu_content">
-            <h3 className="title">播放列表</h3>
-            <div className="list_main">
-                <List>
-                    {users.map(item => (
-                        <List.Item key={item.id} onClick={() => (gatData(item.id), setId(item.id))} >
-                            {item.name}--{item.songName}
-                        </List.Item>
-                    ))}
-                </List>
-            </div>
+        <div>
+            {list && <div className={styles.list}>
+                {list.map(item => (
+                    <p onClick={() => itemClick(item.id)} className={styles.listItem} key={item.id}>{item.name}</p>
+                ))}
+            </div>}
         </div>
     )
 }
-export default musicList;
+
+export default MusicList;
