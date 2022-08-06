@@ -2,9 +2,10 @@ import { FC, useState } from "react";
 import { Outlet } from "@umijs/max";
 import Music1 from "@/components/Music1";
 import { useModel } from "@umijs/max";
-import { Popup, Space, Button } from 'antd-mobile';
+import { Popup, NavBar } from 'antd-mobile';
 import MusicDetails from '@/components/MusicDetails';
 import PlaymusicList from "@/components/PlayMusicList";
+import { useMatch } from "@umijs/max";
 const LayOut2: FC = () => {
   const [visible1, setVisible1] = useState(false);
   const [visible2, setVisible2] = useState(false);
@@ -12,12 +13,30 @@ const LayOut2: FC = () => {
   
   const upDatePage = ()=>{
     setTimeout(() => {
-      setData(Math.floor(Math.random()*100));
+      setData(data+1);
     }, 200)
+  }
+
+  const back = () =>{
+    history.back();
+  }
+  
+  let PathList = ['/qinzhonjin','/','/chenqian','/xujiapeng'];
+  const backBar=()=>{
+    
+    if(PathList.includes(location.pathname))
+    {
+      return false;
+    }else{
+      return (
+        <NavBar onBack={back}>{document.title}</NavBar>
+      );
+    } ;
   }
 
   return (
     <div onClick={()=>(upDatePage())} id="root_1">
+      {backBar()}
       <div>
       <Outlet></Outlet>
       </div>

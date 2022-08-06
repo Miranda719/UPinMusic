@@ -4,9 +4,10 @@ import './index.less'
 import { GetAllList } from '@/services';
 import { useRequest, history } from '@umijs/max';
 import { Tabs, List, Image, Ellipsis, InfiniteScroll } from 'antd-mobile'
-import { PlayOutline, MessageOutline } from 'antd-mobile-icons'
+import { PlayOutline, MessageOutline } from 'antd-mobile-icons';
+import { useModel } from "@umijs/max";
 export default function Page() {
-
+  const {effects,state,audio} = useModel('stores');
   let dataList: any = [
     {
       name: '飙升榜',
@@ -21,13 +22,13 @@ export default function Page() {
       id: 2884035
     }
   ]
-
+  let [id,setId] = useState(state.musicList.id);
   let [songs, setSongs] = useState<any>([])
   let [da, setda] = useState(19723756)
   let [limit, setLimit] = useState(10);
   let [page, setPage] = useState(1)
   const { data, run, loading, error } = useRequest((d) => {
-    console.log(da, "111111111111111111");
+    // console.log(da, "111111111111111111");
 
     return GetAllList(da, limit, (page - 1) * limit)
   }, {
@@ -47,6 +48,21 @@ export default function Page() {
   let tochange = (id: any) => {
     history.push(`/pinglun`, id);
   }
+  //实现点击播放
+  effects.getMusicData({payload:{id}});
+  const onClickPLay=(ids:any)=>{
+    setId(ids);
+        state.isPlay=true;
+        if (state.isPlay) {
+            setTimeout(() => {
+                audio.current?.play();
+            }, 300);
+            
+        } else {
+            return false
+        }
+    
+  }
 
 
   return (
@@ -60,7 +76,7 @@ export default function Page() {
             {/* {JSON.stringify(item)} */}
             {songs.length && songs.map((item1: any, index: any) => (
               <List key={index}>
-                <List.Item
+                <List.Item onClick={()=>onClickPLay(item1.id)}
                   prefix={
                     <>
                       <span className='num'> {index + 1}</span>

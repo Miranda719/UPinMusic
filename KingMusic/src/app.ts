@@ -1,8 +1,6 @@
 import { RequestConfig } from '@umijs/max';
 import { matchRoutes } from '@umijs/max';
 import { notification } from 'antd';
-import { connect } from '@umijs/max';
-import React,{ useEffect } from 'react';
 // 运行时配置
 
 // 全局初始化数据配置，用于 Layout 用户信息和权限初始化

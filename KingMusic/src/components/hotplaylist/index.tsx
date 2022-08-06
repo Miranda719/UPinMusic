@@ -17,12 +17,12 @@ const HotPlayList: FC<HomeHotIProps> = (props) => {
     const getDatas = (ids:number)=>{
         setId(ids);
         state.isPlay=true;
-        console.log('播放',state);
+        // console.log('播放',state);
         if (state.isPlay) {
-            console.log('播放',state);
+            // console.log('播放',state);
             setTimeout(() => {
                 audio.current?.play();
-                console.log('xxxxxxxx');
+                // console.log('xxxxxxxx');
             }, 300);
             
         } else {

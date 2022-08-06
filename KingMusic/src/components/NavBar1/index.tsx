@@ -1,11 +1,17 @@
-import { FC } from "react";
+import React,{ FC, ReactNode } from "react";
 import './index.less'
-const NavBar1:FC = ()=>{
-    return (
-        <div className="navbar-box">
-            标题
-        </div>
-    )
+class NavBar1 extends React.Component<any,any>{
+    constructor(props:any){
+        super(props);
+    }
+    render(): ReactNode {        
+        return (
+            <div className="navbar-box">
+                {this.props.children}
+            </div>
+        )
+    }
+    
 }
 
 export default NavBar1;

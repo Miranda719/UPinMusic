@@ -1,17 +1,19 @@
-import { Link, NavLink, Outlet } from "@umijs/max";
+import {  Outlet } from "@umijs/max";
 import TapBar1 from "@/components/Tapbar1";
 import NavBar1 from "@/components/NavBar1";
 import Search from "@/components/Search";
-import {useState} from 'react';
 import './index.less'
-
+import { useState } from "react";
 
 function LayOut(){
-    const [visible1, setVisible1] = useState(false);
-    
+    const [datas,setDatas]=useState(1);
     return (
-        <div className="content">
-            <NavBar1></NavBar1>
+        <div className="content" onClick={()=>setDatas(datas+1)}>
+            <NavBar1>
+                <div>
+                {document.title}
+                </div>
+            </NavBar1>
             <Search></Search>
             <div className="main">
                 <Outlet></Outlet>

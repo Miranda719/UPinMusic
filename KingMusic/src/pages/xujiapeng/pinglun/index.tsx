@@ -7,7 +7,7 @@ import { Tabs, List, Image, Ellipsis, InfiniteScroll, NavBar } from 'antd-mobile
 import { LikeOutline } from 'antd-mobile-icons'
 export default function Page() {
     const a = useLocation().state
-    console.log(a);
+    // console.log(a);
     const { data, loading, error } = useRequest(() => {
         return GetPinglun(a)
     });

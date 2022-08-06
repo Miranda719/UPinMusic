@@ -17,7 +17,7 @@ const PlaymusicList: FC = () => {
                     id: item.id,
                     url: item.url,
                     name: item.name,
-                    songName: item.name,
+                    songName: item.songName,
                     imgUrl: item.imgUrl
                 }
             }

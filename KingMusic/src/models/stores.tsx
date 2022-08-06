@@ -8,6 +8,7 @@ import {  Toast } from 'antd-mobile'
 // connect(({musicDetail})=>{})
 export default () => {
     //全局属性
+    const Routes = '';
     const state = {
         musicList: {                //当前播放歌曲的信息
             id: 354601,
@@ -178,9 +179,9 @@ export default () => {
                     audio.current?.play();         
                 }, 100);
             }
-            console.log(state.currentIndex,state.musicList,'xxxxxxxxxxxx');
+            // console.log(state.currentIndex,state.musicList,'xxxxxxxxxxxx');
         }
     }
 
-    return { state, audio, musicMethods, inner, effects, reducers };
+    return { state, audio, musicMethods, inner, effects, reducers,Routes };
 }
