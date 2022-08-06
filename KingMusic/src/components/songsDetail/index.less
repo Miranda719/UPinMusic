@@ -1,0 +1,189 @@
+.container {
+    .header {
+        display: flex;
+
+        .left {
+            flex: 1;
+            margin-left: 10px;
+            margin-right: 10px;
+            position: relative;
+
+            .img {
+
+                width: 120px;
+                height: 120px;
+                border-radius: 20px;
+            }
+
+            .playCount {
+                position: absolute;
+                top: 6px;
+                right: 4px;
+                color: #fff;
+                font-size: 12px;
+                background-color: rgba(53, 52, 52, 0.378);
+                border-radius: 10px;
+                padding: 2px 6px 0;
+            }
+        }
+
+        .right {
+            flex: 2;
+
+            .title {
+                letter-spacing: 2px;
+                font-size: 14px;
+            }
+
+            .authorDetail {
+                display: flex;
+                margin: 10px 0;
+                position: relative;
+
+                .authorImg {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                }
+
+                .identityIcon {
+                    width: 16px;
+                    height: 16px;
+                    position: absolute;
+                    top: 14px;
+                    left: 20px;
+                }
+
+                .authorName {
+                    flex: 1;
+                    line-height: 30px;
+                    margin-left: 10px;
+                }
+            }
+
+            .description {
+                padding: 0;
+                font-size: 12px;
+                letter-spacing: 2px;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                overflow: hidden;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                word-break: break-all;
+            }
+
+            .close {
+                position: relative;
+                .closeIcon {
+                    position: absolute;
+                    top: -20px;
+                    right: 20px;
+                    font-size: 26px;
+                    color: #fff;
+                }
+            }
+
+            .overlayContent {
+                .overlyImg {
+                    margin: auto;
+                    margin-top: 40px;
+                    width: 160px;
+                    height: 160px;
+                    border-radius: 20px;
+                }
+
+                .overlayName {
+                    text-align: center;
+                    padding: 20px 0;
+                    color: #fff;
+                    font-size: 14px;
+                    letter-spacing: 2px;
+                }
+            }
+
+            .overlyTags {
+                margin-left: 30px;
+                color: #fff;
+                letter-spacing: 2px;
+                display: flex;
+
+                .overlyAllTags {
+                    flex: 1;
+
+                    .tag {
+                        padding-top: 3px;
+                        text-align: center;
+                    }
+                }
+            }
+
+            .overlyDesc {
+                margin-top: 20px;
+                margin-left: 30px;
+                padding-right: 30px;
+                letter-spacing: 3px;
+                font-size: 12px;
+                color: #fff;
+                height: 300px;
+                overflow-y: scroll;
+            }
+        }
+    }
+
+    .listBox {
+        margin-bottom: 100px;
+
+        .playlist {
+            margin-top: 20px;
+            margin-left: 12px;
+            margin-bottom: 8px;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .itemlist {
+            .img{
+                border-radius: 8px;
+            }
+
+            .right {
+                display: flex;
+
+                .listNo {
+                    line-height: 51px;
+                    margin-right: 10px;
+                }
+
+                .listTitle {
+                    margin-top: 8px;
+
+                    .listName {
+                        flex: 1;
+                        font-size: 14px;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        overflow: hidden;
+                        -webkit-line-clamp: 1;
+                        -webkit-box-orient: vertical;
+                        word-break: break-all;
+
+                    }
+
+                    .arName {
+                        display: flex;
+                        font-size: 12px;
+                        color: #ccc;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        overflow: hidden;
+                        -webkit-line-clamp: 1;
+                        -webkit-box-orient: vertical;
+                        word-break: break-all;
+                    }
+                }
+
+            }
+        }
+    }
+}

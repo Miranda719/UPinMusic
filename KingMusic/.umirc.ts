@@ -23,6 +23,9 @@ export default defineConfig({
         { path: '/chenqian', component: 'chenqian', title: '我的' },
       ]
     },
+    { path: '/perDetail', component: 'perDetail', title: '推荐歌单详情页' },
+    { path: '/songsDetail', component: 'songsDetail', title: '歌曲详情页' },
+    { path: '/login', component: 'login', title: '登录' },
   ],
   npmClient: 'pnpm',
   // 代理配置
