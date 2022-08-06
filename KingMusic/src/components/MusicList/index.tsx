@@ -6,7 +6,7 @@ import { List } from 'antd-mobile';
 import { useModel } from "@umijs/max";
 const musicList: FC = () => {
     let [id, setId] = useState(354601);
-
+    let [isTrue,setisTrue] = useState(false);
     const users = [{
         name: 'FIR',
         songName: '天下',
@@ -41,14 +41,18 @@ const musicList: FC = () => {
             console.log('播放',state);
             setTimeout(() => {
                 audio.current?.play();
-            }, 200);
+                console.log('xxxxxxxx');
+            }, 300);
             
         } else {
             return false
         }
     }
     useEffect(()=>{
-        gatData(id);
+        if(isTrue){
+            gatData(id);
+        }
+        setisTrue(true)
     },[id])
 
     return (

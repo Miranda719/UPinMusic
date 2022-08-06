@@ -10,7 +10,9 @@ export default defineConfig({
   },
   dva: {},
   routes: [
-    { path: '/qinzhonjin', component: 'qinzhonjin', title: '歌曲详情' },
+    {
+      path: '/qinzhonjin', component: 'qinzhonjin', title: '歌曲详情'
+    },
     { path: '/lanmin', component: 'lanmin', title: '搜索' },
     {
       path: '/',
