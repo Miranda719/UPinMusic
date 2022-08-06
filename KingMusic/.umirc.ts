@@ -48,6 +48,7 @@ export default defineConfig({
     { path: '/Recentmusic', component: 'chenqian/Recentmusic', title: '最近播放' },
     { path: '/Gedan', component: 'chenqian/Gedan', title: '歌单' },
     { path: '/Singple', component: 'chenqian/Singple', title: '个人主页' },
+    { path: '/pinglun', component: 'xujiapeng/pinglun',title:'评论' },
   ],
   npmClient: 'pnpm',
   // 代理配置
