@@ -20,9 +20,14 @@ const Music1 = (props: any) => {
     const goTo=()=>{
         history.push('/qinzhonjin');
     }
+    let PathList = ['/qinzhonjin','/','/chenqian','/xujiapeng'];
+    let TF = true;
+    if(PathList.includes(location.pathname)){
+        TF = false
+    }
 
     return (
-        <div className="music-box"  >
+        <div className="music-box" style={TF?{bottom:'0px'}:{bottom:'49px'}} >
             <div className="music-content" >
                 <div className="content-one">
                     <img className="one-img" src={state.musicList.imgUrl} />

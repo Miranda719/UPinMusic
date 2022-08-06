@@ -43,9 +43,9 @@ export default function Page() {
   const shoucangm = !loading2 && data2.playlist.slice(8)
   // console.log(data)
   const userDetailist = !loading && data.profile
-  const goLikemusic = () => {
-    history.push('/Likemusic')
-  }
+  // const goLikemusic = () => {
+  //   history.push('/Likemusic')
+  // }
   const goRencentmusic = () => {
     history.push('/Recentmusic')
   }
@@ -80,7 +80,7 @@ export default function Page() {
       </div>
       <div className={styles.mylove}>
         <ul>
-          <li onClick={() => goLikemusic()}><HeartFill fontSize={20}></HeartFill>
+          <li ><HeartFill fontSize={20}></HeartFill>
             <p>我的喜欢</p>
           </li>
           <li> <PlayOutline fontSize={20}> </PlayOutline>
