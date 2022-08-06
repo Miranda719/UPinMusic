@@ -11,6 +11,7 @@ import Recentmusic from './Recentmusic'
 import Gedan from './Gedan'
 import { useLocation } from '@umijs/max';
 import imgs from '@/assets/images/xuanxiang.png'
+import xindong from '@/assets/images/xindong.png'
 export default function Page() {
   const [id1, setId1] = useState<any>()
   const { data: data, error, loading } = useRequest(() => {
@@ -32,11 +33,12 @@ export default function Page() {
   },
     { refreshDeps: [id1] }
   );
- 
+
   const { data: data5, loading: loading5 } = useRequest(() => {
     return UserML()
   })
   const crePc = !loading5 && data5.createdPlaylistCount
+  const xihuan = !loading2 && data2.playlist.slice(0, 1)
   const creatm = !loading2 && data2.playlist.slice(1, 8)
   const shoucangm = !loading2 && data2.playlist.slice(8)
   // console.log(data)
@@ -88,6 +90,19 @@ export default function Page() {
         </ul>
 
       </div>
+      <div className={styles.mylike}>
+        {!loading2 && xihuan.map((item: any, index: number) => (
+          <div key={item.id} >
+            <img src={item.coverImgUrl} className={styles.coverImgUrl} width={50} height={50} onClick={() => goGedan(item.id)} />
+            <span className={styles.geming} >我喜欢的音乐</span>
+            <p className={styles.songslist}>{item.trackCount}首</p>
+            <div className={styles.xindong}>
+            <img src={xindong} width={15}></img>
+            心动模式
+            </div>  
+            
+          </div>))}
+      </div>
       <div className={styles.list}>
         <Tabs className={styles.fixed1} >
           <Tabs.Tab title='创建歌单' key='fruits'>
@@ -100,7 +115,7 @@ export default function Page() {
                   <div className={styles.pop}>
                     <span className={styles.quxiao}>取消</span>
                     <span className={styles.wancheng}>完成</span>
-                    </div>
+                  </div>
 
                   <Input className={styles.shuru} placeholder='输入新建歌单标题' clearable />
                 </Popup>
