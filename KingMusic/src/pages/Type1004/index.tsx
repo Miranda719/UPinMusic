@@ -23,7 +23,7 @@ const Type1004 = ({ search }) => {
         <div >
             {list && <div className={styles.list}>
                 {list.map(item => (
-                    <div key={item.id}>
+                    <div key={item.id} className={styles.itemBox}>
                         <img className={styles.pic} src={item.cover} onClick={()=>itemClick(item.id)}></img>
                         <p className={styles.listItem} >{item.name}</p>
                     </div>

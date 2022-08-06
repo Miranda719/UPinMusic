@@ -1,8 +1,17 @@
-.list .pic {
-  width: 100px;
-  height: 100px;
+.list {
+  margin-bottom: 10px;
+  background-color: beige;
 }
-.list .listItem {
+.list .info {
+  padding: 10px;
+  border-bottom: 1px dotted #ddd;
+}
+.list .info .pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+}
+.list .info .listItem {
   list-style: none;
   padding: 5px;
   margin-bottom: 5px;
