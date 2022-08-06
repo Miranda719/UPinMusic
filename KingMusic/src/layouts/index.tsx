@@ -17,10 +17,13 @@ const LayOut2: FC = () => {
   }
 
   return (
-    <div onClick={()=>(upDatePage())}>
+    <div onClick={()=>(upDatePage())} id="root_1">
+      <div>
       <Outlet></Outlet>
+      </div>
+      <div>
       <Music1 updateVisible={setVisible1} updateVisible2={setVisible2}></Music1>
-      <Popup visible={visible1} onMaskClick={() => { setVisible1(false) }} bodyStyle={{ height: '100vh' }}>
+      <Popup onClick={()=>upDatePage()} visible={visible1} onMaskClick={() => { setVisible1(false) }} bodyStyle={{ height: '100vh' }} >
         <MusicDetails TorF={false} >
           <div onClick={() => setVisible1(false)} style={{ backgroundColor: "#ddd", margin: '0 auto', width: '40%', height: '6px', borderRadius: '3px' }} ></div>
         </MusicDetails>
@@ -30,6 +33,7 @@ const LayOut2: FC = () => {
         <PlaymusicList></PlaymusicList>
         </div>
       </Popup>
+      </div>
     </div>
   )
 }

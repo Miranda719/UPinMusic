@@ -79,14 +79,14 @@ const MusicDetails = (props: any) => {
         </div>
         <div className={styles.svgF}>
           <RetweetOutlined className={`${styles.svg_item} ${styles.small_svg}`} />
-          <StepBackwardOutlined className={styles.svg_item} />
+          <StepBackwardOutlined className={styles.svg_item} onClick={()=>(musicMethods.changeMusic('prev'),dodo())} />
           <BtnPlayer>
             <div>
             <PauseCircleOutlined style={!state.isPlay ? { display: 'none' } : { display: 'block' }} className={styles.svg_item} onClick={() => (playRecord(),dodo())} />
             <PlayCircleOutlined style={state.isPlay ? { display: 'none' } : { display: 'block' }} className={styles.svg_item} onClick={() => (playRecord(), musicMethods.playerOr(),dodo())} />
             </div>
           </BtnPlayer> 
-          <StepForwardOutlined className={styles.svg_item} />
+          <StepForwardOutlined className={styles.svg_item}  onClick={()=>(musicMethods.changeMusic('next'),dodo())}/>
           <MenuFoldOutlined className={`${styles.svg_item} ${styles.small_svg}`} />
         </div>
       </div>

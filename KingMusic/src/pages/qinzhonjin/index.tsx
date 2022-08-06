@@ -34,7 +34,7 @@ const musicList: FC = () => {
     }];
 
     const { state,audio,effects,musicMethods } = useModel("stores");
-    effects.getMusicData({payload:{id}});
+    // effects.getMusicData({payload:{id}});
     const gatData = (ids: number) => {
         state.isPlay=true;
         if (state.isPlay) {

@@ -26,7 +26,7 @@ export default {
         }
     },
     effects: {
-        *getMusicData({ payload: { id = 354601 } }, { call, put }) {
+        *getMusicData({ payload: { id  } }, { call, put }) {
             const data = yield call(GetMusicUrl, { id });
             const data2 = yield call(GetMusicDetail, { id });
             yield put({
@@ -43,7 +43,7 @@ export default {
             });
         },
 
-        *getMusicDetail({ payload: { id = 354601 } }, { call, put }) {
+        *getMusicDetail({ payload: { id  } }, { call, put }) {
 
         },
         *upDateIsPlay({payload:{isPlay=false}},{call,put}){

@@ -3,13 +3,14 @@ import { GetMusicDetail, GetMusicUrl } from '@/services/index';
 import { useRequest } from "@umijs/max";
 import { MenuFoldOutlined, PauseCircleOutlined, PlayCircleOutlined } from '@ant-design/icons';
 import styles from '../components/MusicDetails/index.less';
+import {  Toast } from 'antd-mobile'
 // import { connect } from "@umijs/max";
 // connect(({musicDetail})=>{})
 export default () => {
     //全局属性
     const state = {
         musicList: {                //当前播放歌曲的信息
-            id: 0,
+            id: 354601,
             url: '',
             name: '',
             songName: '',
@@ -20,44 +21,46 @@ export default () => {
         currentTime: '00:00',        //当前播放时间
         isClick: true,               //是否允许连续多次点击
         isDrag: false,               //是否拖动
-        playList: [],                    //播放列表
+        playList: [],                //播放列表
+        currentIndex:0,              //当前播放的歌曲索引
     }
     const audio = React.createRef<HTMLAudioElement>();
     const inner = React.createRef<HTMLSpanElement>();
 
     const reducers = {
-        save({ payload }, state: any) {
+        save({ payload }:any, state: any) {
             const { musicList } = payload;
-            if (musicList.id === undefined) { 
+            if (typeof musicList === 'undefined'||typeof musicList.id === 'undefined') { 
                 return false
              }else{
-                state.musicList = { ...state, ...musicList };
+                state.musicList = musicList ;
              }
             //判断歌曲在播放列表是否已存在
-            const ToF = state.playList.filter((item: any) => item.id === musicList.id);
+            const ToF = state.playList.filter((item: any) => (item.id === musicList.id));
             if (state.playList.length === 0 || ToF.length === 0) {
+                
                 state.playList.unshift(state.musicList);
             } else {
                 return false;
             }
 
         },
-        update({ payload }, state: any) {
+        update({ payload }:any, state: any) {
             const { isPlay } = payload;
             state.isPlay = isPlay;
         }
     };
 
     const effects = {
-        getMusicData({ payload: { id } }) {
-            const { data } = useRequest(() => {
-                return GetMusicUrl(id);
+        getMusicData({ payload: { id } }:any) {
+            const { data,loading } = useRequest(async() => {
+                return await GetMusicUrl(id);
             }, { refreshDeps: [id] });
-            const { data: data2,loading } = useRequest(() => {
-                return GetMusicDetail(id);
+            const { data: data2,loading:loading2 } = useRequest(async() => {
+                return await GetMusicDetail(id);
             }, { refreshDeps: [id] });
             
-            reducers.save({
+            !loading&&!loading2&&reducers.save({
                 payload: {
                     musicList: {
                         id: data?.data[0].id,
@@ -70,7 +73,7 @@ export default () => {
             }, state)
         }
     }
-    effects.getMusicData({ payload: { id: 354601 } })
+    // effects.getMusicData({ payload: { id: 354601 } })
 
     const musicMethods = {
         playRecord: () => {
@@ -145,6 +148,38 @@ export default () => {
         handleMouseDown: () => {
             state.isDrag = true;
         },
+        changeMusic:(direction:string)=>{
+            if(state.playList.length < 2){
+                Toast.show({
+                    content: `当前列表中有${state.playList.length}首歌曲`,
+                  });
+                  return false;
+            }else if(state.playList.length-2 < state.currentIndex){
+                state.currentIndex = -1;
+            }
+
+            if(direction === 'prev'){
+                state.currentIndex<0?state.currentIndex = state.playList.length-1:'';
+                state.currentIndex-=1;
+                state.currentIndex===-1?state.currentIndex = state.playList.length-1:'';               
+                const musicList = state.playList[state.currentIndex];
+                reducers.save({payload:{musicList}},state);
+                state.isPlay=true;
+                setTimeout(() => {
+                    audio.current?.play();
+                }, 100);
+
+            }else if(direction === 'next'){
+                state.currentIndex++;
+                const musicList = state.playList[state.currentIndex];
+                reducers.save({payload:{musicList}},state);
+                state.isPlay=true;
+                setTimeout(() => {
+                    audio.current?.play();         
+                }, 100);
+            }
+            console.log(state.currentIndex,state.musicList,'xxxxxxxxxxxx');
+        }
     }
 
     return { state, audio, musicMethods, inner, effects, reducers };
